@@ -1,0 +1,8 @@
+Some scripts that make my life easier administrating a TF2 server. 
+
+zipdemos.rb:
+A script that uses 7-zip to compress any .dem file it finds in predefined directories. Sends them to a specified directory after zipping. 
+We use this to publish compressed STV-demos automatically every night.
+
+zipmaps.rb:
+A script that compresses any yet uncompressed TF2 maps for fast download by players. It assumes your TF2 maps dir is somehow also used for providing downloads to clients that don't have the map.
