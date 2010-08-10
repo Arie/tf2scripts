@@ -16,11 +16,11 @@ zips = zips.map{|map| map.match(/([^\/]*)$/).to_s.chomp.chomp(".bsp.bz2")}
 
 #Remove default maps from the array
 defaultmaps = ['arena_badlands', 'arena_granary', 'arena_lumberyard', 'arena_nucleus', 'arena_offblast_final', 'arena_ravine', 'arena_sawmill', 'arena_watchtower', 'arena_well',
-               'cp_badlands', 'cp_dustbowl', 'cp_egypt_final', 'cp_fastlane', 'cp_granary', 'cp_gravelpit', 'cp_junction_final', 'cp_steel', 'cp_well', 'cp_yukon_final', 
+               'cp_badlands', 'cp_coldfront', 'cp_dustbowl', 'cp_egypt_final', 'cp_fastlane', 'cp_freight_final1', 'cp_gorge', 'cp_granary', 'cp_gravelpit', 'cp_junction_final', 'cp_steel', 'cp_well', 'cp_yukon_final',
                'ctf_2fort', 'ctf_sawmill', 'ctf_turbine', 'ctf_well',
                'koth_nucleus', 'koth_sawmill', 'koth_viaduct',
-               'pl_badwater', 'pl_goldrush', 'pl_hoodoo_final',
-               'plr_pipeline', 
+               'pl_badwater', 'pl_goldrush', 'pl_hoodoo_final', 'pl_thundermountain', 'pl_upward',
+               'plr_hightower', 'plr_pipeline',
                'tc_hydro']
 
 
