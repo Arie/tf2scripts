@@ -4,17 +4,17 @@ require 'duration'
 
 #Add a source/destination hash for each server/directory you want to zip demos for
 directories = [
-		{:source => '/home/tf2/tf2-1/orangebox/tf', 
-		:destination => '/var/www/fb/demos/1'}, 
-		{:source => '/home/tf2/tf2-2/orangebox/tf', 
-		:destination => '/var/www/fb/demos/2'}, 
-		{:source => '/home/tf2/tf2-3/orangebox/tf', 
-		:destination => '/var/www/fb/demos/3'},
-		{:source => '/home/tf2/stv_relay/orangebox/tf',
-		:destination => '/var/www/fb/demos/relay'}, 
-		{:source => '/home/tf2/tf2-4/orangebox/tf', 
-		:destination => '/var/www/fb/demos/4'}
-		]
+    {:source => '/home/tf2/tf2-1/orangebox/tf',
+    :destination => '/var/www/fb/demos/1'},
+    {:source => '/home/tf2/tf2-2/orangebox/tf',
+    :destination => '/var/www/fb/demos/2'},
+    {:source => '/home/tf2/tf2-3/orangebox/tf',
+    :destination => '/var/www/fb/demos/3'},
+    {:source => '/home/tf2/stv_relay/orangebox/tf',
+    :destination => '/var/www/fb/demos/relay'},
+    {:source => '/home/tf2/tf2-4/orangebox/tf',
+    :destination => '/var/www/fb/demos/4'}
+]
 
 demozipstarttime = Time.now
 puts "--------------------------------------"
