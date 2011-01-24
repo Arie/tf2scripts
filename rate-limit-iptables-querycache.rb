@@ -29,7 +29,7 @@ servers.each do |server|
   server[:ports].each do |port|
     querycache_port = port + 1000
     `#{iptables} -t nat -A PREROUTING -p udp -d #{ip} --dport #{port} -m string --algo bm --hex-string '|ffffffff54|' -j REDIRECT --to-port #{querycache_port}`
-    `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 50/s --limit-burst 50 -j ACCEPT`
+    `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 30/s --limit-burst 30 -j ACCEPT`
     `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 1/s  --limit-burst 1 -j ULOG --ulog-nlgroup 1 --ulog-prefix \"SOURCE UDP FLOOD #{port}\"`
     `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -j DROP`
     `screen -AmdS q-#{port} querycache #{querycache_port} #{ip} #{port}`
