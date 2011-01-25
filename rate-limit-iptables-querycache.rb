@@ -17,8 +17,7 @@ servers = [
 `#{iptables} -A INPUT -m state --state established,related -j ACCEPT`
 ##
 ### put ips you want to allow bypassing all these rules here
-`#{iptables} -A INPUT -s ariekanarie.nl       -j ACCEPT`
-`#{iptables} -A INPUT -s vdsl.ariekanarie.nl  -j ACCEPT`
+#`#{iptables} -A INPUT -s myip       -j ACCEPT`
 ##
 ### local connections
 `#{iptables} -A INPUT -s 127.0.0.1 -j ACCEPT`
