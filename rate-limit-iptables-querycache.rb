@@ -8,8 +8,6 @@ servers = [
           :ports => [ 27035, 27040 ]}
           ]
 #clear old stuff
-`killall querycache`
-`#{iptables} -t nat -F`
 `#{iptables} -F`
 
 ### default rule for established connections
@@ -18,6 +16,7 @@ servers = [
 ##
 ### put ips you want to allow bypassing all these rules here
 #`#{iptables} -A INPUT -s myip       -j ACCEPT`
+#`#{iptables} -A INPUT -s my_ip       -j ACCEPT`
 ##
 ### local connections
 `#{iptables} -A INPUT -s 127.0.0.1 -j ACCEPT`
@@ -26,11 +25,8 @@ servers = [
 servers.each do |server|
   ip = server[:ip]
   server[:ports].each do |port|
-    querycache_port = port + 1000
-    `#{iptables} -t nat -A PREROUTING -p udp -d #{ip} --dport #{port} -m string --algo bm --hex-string '|ffffffff54|' -j REDIRECT --to-port #{querycache_port}`
-    `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 30/s --limit-burst 30 -j ACCEPT`
+    `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 60/s --limit-burst 60 -j ACCEPT`
     `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -m limit --limit 1/s  --limit-burst 1 -j ULOG --ulog-nlgroup 1 --ulog-prefix \"SOURCE UDP FLOOD #{port}\"`
     `#{iptables} -A INPUT -p udp -m udp --dport #{port} -m string --algo bm --hex-string '|ffffffff|' -j DROP`
-    `screen -AmdS q-#{port} querycache #{querycache_port} #{ip} #{port}`
   end
 end
